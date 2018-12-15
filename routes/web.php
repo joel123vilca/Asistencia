@@ -21,3 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/alumno', 'AlumnoController@index')->name('alumno');
 Route::get('/docente', 'DocenteController@index')->name('docente');
+
+Route::resource('/clase','ClaseController');
+Route::resource('/curso','CursoController');
+Route::resource('/asiste','AsisteClaseController');
+Route::resource('/justificacion','JustificacionClaseController');
