@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Curso;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,8 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function cursos()
     {
-        return $this->belongsToMany(Pertenece::class, 'cursos', 'user_id','curso_id');
+        return $this->belongstoMany(User::class, 'cursos','id','user_id');
     }
+
 }

@@ -6,6 +6,7 @@ use App\Pertenece;
 use Illuminate\Http\Request;
 use App\User;
 use App\Curso;
+
 class PerteneceController extends Controller
 {
     /**
@@ -15,20 +16,30 @@ class PerteneceController extends Controller
      */
     public function index($nombre)
     {
-        $user= $this->findByUsername($nombre);      
+        $user = $this->findByUsername($nombre);
+        $curso_id = $this->findByCursoId($user); 
+        var_dump($curso_id);
         return view('alumno.alumno',[
             'user' => $user,
-            'cursos'=>$user->cursos,
+            'cursos'=> $cursos_id->cursos,
         ]);
     }
 
     private function findByUsername($nombre)
     {
-        return User::where('nombre', $nombre)->first();
+        //return User::where('nombre', $nombre)->select("id");
+        return User::select('id')
+        ->where('nombre','=','nombre')
+        ->get();
     }
-    
-    
-    
+    private function findByCursoId($user)
+    {
+        //return User::where('nombre', $nombre)->select("id");
+        return Pertenece::select('curso_id')
+        ->where('user_id','=','user')
+        ->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

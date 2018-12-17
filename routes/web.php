@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::get('/{nombre}','PerteneceController@index');
+Route::get('/{nombre}','AlumnoController@listaCursos');
 Route::get('/docente', 'DocenteController@index')->name('docente');
+
+Route::get('/{nombre}/{curso}/asistencias','AlumnoController@asistencias');
 
 Route::resource('/clase','ClaseController');
 Route::resource('/curso','CursoController');
