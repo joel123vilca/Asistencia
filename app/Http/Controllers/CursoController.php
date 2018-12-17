@@ -16,8 +16,11 @@ class CursoController extends Controller
     {
         $cursos = Curso::get();
         return view('admin.cursos', compact('cursos'));
+    
     }
 
+    
+    
     /**
      * Show the form for creating a new resource.
      *

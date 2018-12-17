@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsistenciasTable extends Migration
+class CreateAsistenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateAsistenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencias', function (Blueprint $table) {
+        Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
             $table->integer('clase_id')->unsigned();
             $table->foreign('clase_id')->references('id')->on('clases');
-            $table->integer('justificacion_id')->unsigned();
-            $table->foreign('justificacion_id')->references('id')->on('justificacion');
             $table->integer('curso_id')->unsigned();
             $table->foreign('curso_id')->references('id')->on('cursos');
             $table->boolean('asiste');
@@ -35,6 +33,6 @@ class CreateAsistenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencias');
+        Schema::dropIfExists('asistencia');
     }
 }

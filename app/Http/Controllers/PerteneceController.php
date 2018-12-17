@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pertenece;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Curso;
 class PerteneceController extends Controller
 {
     /**
@@ -12,11 +13,22 @@ class PerteneceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($nombre)
     {
-        //
+        $user= $this->findByUsername($nombre);      
+        return view('alumno.alumno',[
+            'user' => $user,
+            'cursos'=>$user->cursos,
+        ]);
     }
 
+    private function findByUsername($nombre)
+    {
+        return User::where('nombre', $nombre)->first();
+    }
+    
+    
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -15,6 +15,8 @@ class CreateJustificacionTable extends Migration
     {
         Schema::create('justificacion', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('asistencia_id')->unsigned();
+            $table->foreign('asistencia_id')->references('id')->on('asistencia');
             $table->string('detalle');
             $table->timestamps();
         });
