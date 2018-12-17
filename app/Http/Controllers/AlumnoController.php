@@ -13,27 +13,26 @@ class AlumnoController extends Controller
     {
         return view('alumno.alumno');
     }
-
     public function listaCursos()
     {
         $id=Auth::id();
-        $cursos= DB::table('users')
-            ->join('pertenece', 'users.id', '=', 'pertenece.user_id')
-            ->join('cursos', 'cursos.id', '=', 'pertenece.curso_id')
-            ->select('cursos.*')
-            ->where('users.id', '=',$id)
-            ->get();
-        
-        return view('alumno.alumno', compact('cursos'));
+        $user = $this->findByUsername($id);
+        return view('alumno.alumno',[
+            'user' => $user,
+            'cursos'=>$user->cursos,
+        ]);
+
+    }
+
+    private Function findByUsername($id)
+    {
+        return User::where('id','=',$id)->first();
     }
     Public function asistencias($user, $curso)
     {
         $id=Auth::id();
         $clases= DB::table('clases')->where('curso_id', '=',$curso)
             ->get();
-
-            
-
         return view('alumno.asistencias', compact('clases'));
     }
 }

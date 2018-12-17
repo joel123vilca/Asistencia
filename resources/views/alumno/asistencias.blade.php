@@ -6,7 +6,7 @@
   <li class="list-group-item active">MIS ASISTENCIAS </li>
 
    @foreach($clases as $clase)
-  <li class="list-group-item"> {{ $clase->tema}}</li>
+  <li class="list-group-item"> {{ $clase->tema}} </li>
     @endforeach
 </ul>
 </div>

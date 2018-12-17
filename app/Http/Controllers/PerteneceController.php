@@ -17,8 +17,8 @@ class PerteneceController extends Controller
     public function index($nombre)
     {
         $user = $this->findByUsername($nombre);
-        $curso_id = $this->findByCursoId($user); 
-        var_dump($curso_id);
+        $cursos = $this->findByCursoId($user); 
+        var_dump($cursos);
         return view('alumno.alumno',[
             'user' => $user,
             'cursos'=> $cursos_id->cursos,
