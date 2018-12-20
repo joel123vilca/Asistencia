@@ -25,20 +25,7 @@ class PerteneceController extends Controller
         ]);
     }
 
-    private function findByUsername($nombre)
-    {
-        //return User::where('nombre', $nombre)->select("id");
-        return User::select('id')
-        ->where('nombre','=','nombre')
-        ->get();
-    }
-    private function findByCursoId($user)
-    {
-        //return User::where('nombre', $nombre)->select("id");
-        return Pertenece::select('curso_id')
-        ->where('user_id','=','user')
-        ->get();
-    }
+    
 
     /**
      * Show the form for creating a new resource.

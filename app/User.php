@@ -33,4 +33,9 @@ class User extends Authenticatable
         return $this->belongstoMany(Curso::class, 'pertenece','user_id','curso_id');
     }
 
+    public function clases()
+    {
+        return $this->belongstoMany('App\Clase','asistencia','user_id','clase_id');
+    }
+
 }
