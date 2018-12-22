@@ -12,6 +12,6 @@ class Clase extends Model
     
     public function  alumnos()
     {
-        return $this->belongstoMany('app\User');
+        return $this->belongstoMany('App\User','user','id','nombre');
     }
 }

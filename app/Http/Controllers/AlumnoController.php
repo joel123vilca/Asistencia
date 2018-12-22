@@ -33,15 +33,9 @@ class AlumnoController extends Controller
     Public function asistencias($user, $curso)
     {
         $id = Auth::id();
-        $asistencias = Asistencia::join('user','user.id','=',$id)
-        ->join('curso','curso.id','=',$curso)
-        ->join('clase','clase.id','=','curso.id')
-        ->select('clase.tema','clase.create_at','asistencia.asiste')
-        ->getQuery()
-        ->get(); 
+        $clases = User::find($id)->clases;
         return view('alumno.asistencias', [
             'clases' => $clases,
-            'asistencias'=>$asistencias,
         ]);
     }
 }

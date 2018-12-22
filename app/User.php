@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function clases()
     {
-        return $this->belongstoMany('App\Clase','asistencia','user_id','clase_id');
+        return $this->belongstoMany('App\Clase','asistencia','users_id','clase_id');
     }
 
 }

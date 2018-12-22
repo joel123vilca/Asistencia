@@ -14,11 +14,12 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($asistencias as $asistencia)
+        @foreach($clases as $clase)
             <tr>
-                <td>{{ $asistencia->tema}}</td>
-                <td>{{ $asistencia->created_at}}</td>
-                <td>{{ $asistencia->asistio}}</td>
+                <td>{{ $clase->tema}}</td>
+                <td></td>
+                
+                <td>{{ $clase->alumnos->nombre}}</td>
                 <td><a class=" btn-btn">Justificar</a></td>
             </tr>
           @endforeach
